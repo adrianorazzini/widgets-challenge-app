@@ -3,7 +3,7 @@ package br.com.adrianorazzini.remote.request
 import br.com.adrianorazzini.remote.BuildConfig
 import br.com.adrianorazzini.remote.model.Card
 import br.com.adrianorazzini.remote.model.Statement
-import br.com.adrianorazzini.remote.model.Widget
+import br.com.adrianorazzini.remote.model.WidgetResponse
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -13,13 +13,13 @@ import retrofit2.http.Path
 interface RequestApi {
 
     @GET("home")
-    suspend fun getWidgets(): List<Widget>
+    suspend fun getWidgets(): WidgetResponse?
 
     @GET("card/cardId")
-    suspend fun getCardInfo(@Path("cardId") cardId: String): Card
+    suspend fun getCardInfo(@Path("cardId") cardId: String): Card?
 
     @GET("statement/cardId")
-    suspend fun getStatement(@Path("cardId") cardId: String): Statement
+    suspend fun getStatement(@Path("cardId") cardId: String): Statement?
 
     companion object Factory {
 

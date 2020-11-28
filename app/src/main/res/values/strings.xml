@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Widget Challenge</string>
+
+    <string name="unavailable">Indisponível</string>
+
+    <string name="home_header_invalid">Header Indisponível</string>
+    <string name="home_card_button_details">Ver detalhes</string>
+    <string name="home_card_button_statement">Ver extrato</string>
+
 </resources>

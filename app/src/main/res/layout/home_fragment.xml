@@ -9,14 +9,32 @@
         tools:context=".ui.main.MainActivity">
 
         <TextView
-            android:id="@+id/mainText"
+            android:id="@+id/homeHeaderText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello World"
+            android:layout_marginStart="@dimen/default_margin_huge"
+            android:layout_marginTop="@dimen/default_margin_huge"
+            android:text="@{viewModel.homeHeaderField}"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_huge"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Olá Fulano" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/homeRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/default_margin_huge"
+            android:clipToPadding="false"
+            android:padding="@dimen/default_margin_intermediary"
+            android:scrollbars="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/homeHeaderText"
+            tools:listitem="@layout/cardview_home" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
