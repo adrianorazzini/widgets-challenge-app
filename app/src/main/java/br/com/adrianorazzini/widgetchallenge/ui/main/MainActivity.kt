@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupActionBarWithNavController
 import br.com.adrianorazzini.widgetchallenge.R
 import br.com.adrianorazzini.widgetchallenge.databinding.MainActivityBinding
 
@@ -19,5 +21,14 @@ class MainActivity : AppCompatActivity() {
         mViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         mBinding.viewModel = mViewModel
         mBinding.executePendingBindings()
+
+        // Get the NavController for your NavHostFragment
+        val navController = findNavController(R.id.mainNavHostFragment)
+        setupActionBarWithNavController(navController)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.mainNavHostFragment)
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }

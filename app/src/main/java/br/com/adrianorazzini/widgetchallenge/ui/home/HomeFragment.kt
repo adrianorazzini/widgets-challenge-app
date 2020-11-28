@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import br.com.adrianorazzini.remote.model.Identifier
@@ -17,10 +18,10 @@ import br.com.adrianorazzini.widgetchallenge.common.fragment.FragmentItem
 import br.com.adrianorazzini.widgetchallenge.databinding.HomeFragmentBinding
 import br.com.adrianorazzini.widgetchallenge.ui.home.adapter.CardListAdapter
 import br.com.adrianorazzini.widgetchallenge.ui.home.listener.CardButtonClickListener
+import br.com.adrianorazzini.widgetchallenge.ui.main.MainActivity
 import br.com.adrianorazzini.widgetchallenge.ui.main.MainViewModel
 import br.com.adrianorazzini.widgetchallenge.ui.main.MainViewState
 import kotlinx.android.synthetic.main.home_fragment.*
-import kotlinx.android.synthetic.main.home_fragment.view.*
 
 class HomeFragment : FragmentItem<MainViewModel, MainViewState>(), CardButtonClickListener {
 
@@ -66,6 +67,12 @@ class HomeFragment : FragmentItem<MainViewModel, MainViewState>(), CardButtonCli
         homeRecyclerView.adapter = mRecyclerAdapter
     }
 
+    override fun onStart() {
+        super.onStart()
+
+        (activity as MainActivity).supportActionBar?.hide()
+    }
+
     override fun onPause() {
         super.onPause()
 
@@ -78,7 +85,8 @@ class HomeFragment : FragmentItem<MainViewModel, MainViewState>(), CardButtonCli
             if (tag is String) {
                 when {
                     Identifier.fromString(tag) == Identifier.HOME_CARD_WIDGET -> {
-                        // TODO navigate to card fragment
+                        findNavController()
+                            .navigate(R.id.action_homeFragment_to_cardInfoFragment)
                     }
                     Identifier.fromString(tag) == Identifier.HOME_STATEMENT_WIDGET -> {
                         // TODO navigate to statement fragment

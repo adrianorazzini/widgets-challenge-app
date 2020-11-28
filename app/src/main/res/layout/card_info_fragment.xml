@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.main.MainActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardLayout"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginStart="@dimen/default_margin_huge"
+            android:layout_marginTop="@dimen/default_margin_huge"
+            android:layout_marginEnd="@dimen/default_margin_huge"
+            android:background="@drawable/bg_card_info"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:context=".ui.main.MainActivity">
+
+            <ImageView
+                android:id="@+id/splash_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginStart="@dimen/default_margin_huge"
+                android:layout_marginTop="@dimen/default_margin_huge"
+                android:src="@drawable/ic_movile_pay"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="contentDescription" />
+
+            <TextView
+                android:id="@+id/cardNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_margin_huge"
+                android:text="**** **** **** 9687"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size_huge"
+                app:layout_constraintBottom_toTopOf="@id/cardName"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="**** **** **** 9687" />
+
+            <TextView
+                android:id="@+id/cardName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_margin_huge"
+                android:text="Adriano Razzini"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size_medium"
+                app:layout_constraintBottom_toTopOf="@id/cardExpDate"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="Fulano de Tal" />
+
+            <TextView
+                android:id="@+id/cardExpDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_margin_huge"
+                android:layout_marginBottom="@dimen/default_margin_huge"
+                android:text="02/22"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size_medium"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="12/20" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/availableLimitLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin_huge"
+            android:layout_marginTop="@dimen/default_margin_huge"
+            android:text="@string/card_info_available_limit"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_medium"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardLayout" />
+
+        <TextView
+            android:id="@+id/availableLimitValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:text="R$ 3.000,00"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constraintStart_toEndOf="@id/availableLimitLabel"
+            app:layout_constraintTop_toTopOf="@id/availableLimitLabel"
+            tools:text="R$ 3.000,00" />
+
+        <TextView
+            android:id="@+id/totalLimitLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin_huge"
+            android:layout_marginTop="@dimen/default_margin"
+            android:text="@string/card_info_total_limit"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_medium"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/availableLimitLabel" />
+
+        <TextView
+            android:id="@+id/totalLimitValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:text="R$ 5.000,00"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constraintStart_toEndOf="@id/totalLimitLabel"
+            app:layout_constraintTop_toTopOf="@id/totalLimitLabel"
+            tools:text="R$ 5.000,00" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="br.com.adrianorazzini.widgetchallenge.ui.main.MainViewModel" />
+    </data>
+</layout>

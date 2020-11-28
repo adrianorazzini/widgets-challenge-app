@@ -16,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import br.com.adrianorazzini.widgetchallenge.R
 import br.com.adrianorazzini.widgetchallenge.common.fragment.FragmentItem
 import br.com.adrianorazzini.widgetchallenge.databinding.SplashFragmentBinding
+import br.com.adrianorazzini.widgetchallenge.ui.main.MainActivity
 import br.com.adrianorazzini.widgetchallenge.ui.main.MainViewModel
 import br.com.adrianorazzini.widgetchallenge.ui.main.MainViewState
 import kotlinx.android.synthetic.main.splash_fragment.*
@@ -50,6 +51,9 @@ class SplashFragment : FragmentItem<MainViewModel, MainViewState>() {
 
     override fun onResume() {
         super.onResume()
+
+        (activity as MainActivity).supportActionBar?.hide()
+
         animateLogo()
         mHandler.postDelayed({
             val options = NavOptions

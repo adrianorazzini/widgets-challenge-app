@@ -7,4 +7,6 @@
     <string name="home_card_button_details">Ver detalhes</string>
     <string name="home_card_button_statement">Ver extrato</string>
 
+    <string name="card_info_available_limit">Limite Disponível:</string>
+    <string name="card_info_total_limit">Limite Total:</string>
 </resources>
