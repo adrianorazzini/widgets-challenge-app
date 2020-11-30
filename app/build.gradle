@@ -20,13 +20,13 @@ android {
         release {
             keyAlias 'mpwidgets'
             keyPassword 'mpandroid'
-            storeFile file('../Keystore.jks')
+            storeFile file('../keystore/Keystore.jks')
             storePassword 'mpandroid'
         }
         debug {
             keyAlias 'mpwidgets'
             keyPassword 'mpandroid'
-            storeFile file('../Keystore.jks')
+            storeFile file('../keystore/Keystore.jks')
             storePassword 'mpandroid'
         }
     }
