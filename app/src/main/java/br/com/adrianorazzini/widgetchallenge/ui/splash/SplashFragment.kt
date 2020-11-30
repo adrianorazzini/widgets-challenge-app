@@ -69,7 +69,6 @@ class SplashFragment : FragmentItem<MainViewModel, MainViewState>() {
         super.onPause()
 
         mHandler.removeCallbacksAndMessages(null)
-        mDisposableContainer.clear()
     }
 
     private fun animateLogo() {

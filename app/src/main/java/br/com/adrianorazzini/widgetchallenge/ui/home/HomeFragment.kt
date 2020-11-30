@@ -78,12 +78,6 @@ class HomeFragment : FragmentItem<MainViewModel, MainViewState>(), CardButtonCli
         mViewModel.loadWidgets()
     }
 
-    override fun onPause() {
-        super.onPause()
-
-        mDisposableContainer.clear()
-    }
-
     override fun onButtonClick(view: View, position: Int) {
         if (view.id == R.id.cardButton) {
             val tag = view.tag

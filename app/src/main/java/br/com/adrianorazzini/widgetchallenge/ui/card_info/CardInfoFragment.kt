@@ -54,7 +54,6 @@ class CardInfoFragment : FragmentItem<MainViewModel, MainViewState>() {
         super.onPause()
 
         mViewModel.clearCardInfo()
-        mDisposableContainer.clear()
     }
 
     override fun updateViewStateSuccess(viewState: MainViewState) {

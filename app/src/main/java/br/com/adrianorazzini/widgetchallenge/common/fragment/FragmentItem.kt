@@ -8,15 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import br.com.adrianorazzini.widgetchallenge.common.databinding.BaseViewModel
 import br.com.adrianorazzini.widgetchallenge.common.databinding.BaseViewState
-import io.reactivex.disposables.CompositeDisposable
 
 abstract class FragmentItem<VM : BaseViewModel<VS>, VS : BaseViewState> : Fragment() {
 
     companion object {
         private const val LOG_TAG = "FragmentItem"
     }
-
-    protected val mDisposableContainer = CompositeDisposable()
 
     lateinit var mViewModel: VM
     lateinit var mBinding: ViewDataBinding

@@ -69,7 +69,6 @@ class StatementFragment : FragmentItem<MainViewModel, MainViewState>() {
         super.onPause()
 
         mViewModel.clearStatementInfo()
-        mDisposableContainer.clear()
     }
 
     override fun updateViewStateSuccess(viewState: MainViewState) {
