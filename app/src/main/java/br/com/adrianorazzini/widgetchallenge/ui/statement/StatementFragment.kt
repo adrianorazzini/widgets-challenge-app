@@ -1,7 +1,6 @@
 package br.com.adrianorazzini.widgetchallenge.ui.statement
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.adrianorazzini.widgetchallenge.R
-import br.com.adrianorazzini.widgetchallenge.common.fragment.FragmentItem
+import br.com.adrianorazzini.widgetchallenge.common.fragment.BaseFragment
 import br.com.adrianorazzini.widgetchallenge.databinding.StatementFragmentBinding
 import br.com.adrianorazzini.widgetchallenge.ui.dialog.showGenericErrorDialog
 import br.com.adrianorazzini.widgetchallenge.ui.dialog.showInvalidAccountIdDialog
@@ -21,13 +20,9 @@ import br.com.adrianorazzini.widgetchallenge.ui.main.StateError
 import br.com.adrianorazzini.widgetchallenge.ui.statement.adapter.StatementListAdapter
 import kotlinx.android.synthetic.main.statement_fragment.*
 
-class StatementFragment : FragmentItem<MainViewModel, MainViewState>() {
+class StatementFragment : BaseFragment<MainViewModel, MainViewState>() {
 
     private lateinit var mRecyclerAdapter: StatementListAdapter
-
-    companion object {
-        private const val LOG_TAG = "StatementFragment"
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -88,12 +83,5 @@ class StatementFragment : FragmentItem<MainViewModel, MainViewState>() {
                 (activity as MainActivity).showGenericErrorDialog()
             }
         }
-    }
-
-    override fun updateViewStateError(throwable: Throwable?) {
-        Log.e(LOG_TAG, throwable?.message ?: "Error to update view state!")
-
-        (activity as MainActivity).hideProgressDialog(0)
-        (activity as MainActivity).showGenericErrorDialog()
     }
 }

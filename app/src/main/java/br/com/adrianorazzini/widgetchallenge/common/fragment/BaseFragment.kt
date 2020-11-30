@@ -9,10 +9,10 @@ import androidx.lifecycle.Observer
 import br.com.adrianorazzini.widgetchallenge.common.databinding.BaseViewModel
 import br.com.adrianorazzini.widgetchallenge.common.databinding.BaseViewState
 
-abstract class FragmentItem<VM : BaseViewModel<VS>, VS : BaseViewState> : Fragment() {
+abstract class BaseFragment<VM : BaseViewModel<VS>, VS : BaseViewState> : Fragment() {
 
     companion object {
-        private const val LOG_TAG = "FragmentItem"
+        private const val LOG_TAG = "BaseFragment"
     }
 
     lateinit var mViewModel: VM
@@ -28,11 +28,6 @@ abstract class FragmentItem<VM : BaseViewModel<VS>, VS : BaseViewState> : Fragme
 
     open fun updateViewStateSuccess(viewState: VS) {
         Log.d(LOG_TAG, "::updateViewStateSuccess:: - State: $viewState")
-        // Implemented by child
-    }
-
-    open fun updateViewStateError(throwable: Throwable?) {
-        Log.e(LOG_TAG, throwable?.message ?: "Error to update view state!")
         // Implemented by child
     }
 }

@@ -1,7 +1,6 @@
 package br.com.adrianorazzini.widgetchallenge.ui.home
 
 import android.os.Bundle
-import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
@@ -14,9 +13,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import br.com.adrianorazzini.remote.model.Identifier
 import br.com.adrianorazzini.widgetchallenge.R
 import br.com.adrianorazzini.widgetchallenge.common.decoration.GridSpacingItemDecoration
-import br.com.adrianorazzini.widgetchallenge.common.fragment.FragmentItem
+import br.com.adrianorazzini.widgetchallenge.common.fragment.BaseFragment
 import br.com.adrianorazzini.widgetchallenge.databinding.HomeFragmentBinding
-import br.com.adrianorazzini.widgetchallenge.ui.dialog.showGenericErrorDialog
 import br.com.adrianorazzini.widgetchallenge.ui.dialog.showSimpleAlertDialog
 import br.com.adrianorazzini.widgetchallenge.ui.home.adapter.CardListAdapter
 import br.com.adrianorazzini.widgetchallenge.ui.home.listener.CardButtonClickListener
@@ -26,12 +24,11 @@ import br.com.adrianorazzini.widgetchallenge.ui.main.MainViewState
 import kotlinx.android.synthetic.main.home_fragment.*
 import java.util.concurrent.TimeUnit
 
-class HomeFragment : FragmentItem<MainViewModel, MainViewState>(), CardButtonClickListener {
+class HomeFragment : BaseFragment<MainViewModel, MainViewState>(), CardButtonClickListener {
 
     private lateinit var mRecyclerAdapter: CardListAdapter
 
     companion object {
-        private const val LOG_TAG = "HomeFragment"
         private const val SPAN_COUNT = 1
         private const val SPACING_DIMENSION = 8f
     }
@@ -112,12 +109,5 @@ class HomeFragment : FragmentItem<MainViewModel, MainViewState>(), CardButtonCli
 
             (activity as MainActivity).hideProgressDialog(TimeUnit.SECONDS.toMillis(1))
         }
-    }
-
-    override fun updateViewStateError(throwable: Throwable?) {
-        Log.e(LOG_TAG, throwable?.message ?: "Error to update view state!")
-
-        (activity as MainActivity).hideProgressDialog(0)
-        (activity as MainActivity).showGenericErrorDialog()
     }
 }
