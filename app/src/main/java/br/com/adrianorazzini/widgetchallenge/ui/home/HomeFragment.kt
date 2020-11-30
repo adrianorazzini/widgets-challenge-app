@@ -71,6 +71,7 @@ class HomeFragment : FragmentItem<MainViewModel, MainViewState>(), CardButtonCli
         super.onStart()
 
         (activity as MainActivity).supportActionBar?.hide()
+        mViewModel.loadWidgets()
     }
 
     override fun onPause() {
@@ -85,6 +86,7 @@ class HomeFragment : FragmentItem<MainViewModel, MainViewState>(), CardButtonCli
             if (tag is String) {
                 when {
                     Identifier.fromString(tag) == Identifier.HOME_CARD_WIDGET -> {
+                        mViewModel.setSelectedCardId(position)
                         findNavController()
                             .navigate(R.id.action_homeFragment_to_cardInfoFragment)
                     }

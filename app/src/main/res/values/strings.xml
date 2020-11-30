@@ -3,10 +3,15 @@
 
     <string name="unavailable">Indisponível</string>
 
+    <string name="generic_error_alert_title">Something Went Wrong!</string>
+    <string name="generic_error_alert_message">Please, try again later</string>
+
     <string name="home_header_invalid">Header Indisponível</string>
     <string name="home_card_button_details">Ver detalhes</string>
     <string name="home_card_button_statement">Ver extrato</string>
 
     <string name="card_info_available_limit">Limite Disponível:</string>
     <string name="card_info_total_limit">Limite Total:</string>
+    <string name="card_info_invalid_id_title">Cartão Inválido</string>
+    <string name="card_info_invalid_id_message">Não foi possível carregar as informações do cartão selecionado</string>
 </resources>

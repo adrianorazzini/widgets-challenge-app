@@ -8,4 +8,8 @@ data class Card(
     @SerializedName("expirationDate") val expDate: String,
     @SerializedName("availableLimit") val availableLimit: String,
     @SerializedName("totalLimit") val totalLimit: String
-)
+) {
+    companion object {
+        const val DEFAULT_CARD_ID = "123"
+    }
+}

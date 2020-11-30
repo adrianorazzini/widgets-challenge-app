@@ -15,11 +15,11 @@ interface RequestApi {
     @GET("home")
     suspend fun getWidgets(): WidgetResponse?
 
-    @GET("card/cardId")
+    @GET("card/{cardId}")
     suspend fun getCardInfo(@Path("cardId") cardId: String): Card?
 
-    @GET("statement/cardId")
-    suspend fun getStatement(@Path("cardId") cardId: String): Statement?
+    @GET("statement/{accountId}")
+    suspend fun getStatement(@Path("accountId") accountId: String): Statement?
 
     companion object Factory {
 
