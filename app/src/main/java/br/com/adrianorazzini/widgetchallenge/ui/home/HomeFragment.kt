@@ -16,6 +16,7 @@ import br.com.adrianorazzini.widgetchallenge.R
 import br.com.adrianorazzini.widgetchallenge.common.decoration.GridSpacingItemDecoration
 import br.com.adrianorazzini.widgetchallenge.common.fragment.FragmentItem
 import br.com.adrianorazzini.widgetchallenge.databinding.HomeFragmentBinding
+import br.com.adrianorazzini.widgetchallenge.ui.dialog.showGenericErrorDialog
 import br.com.adrianorazzini.widgetchallenge.ui.dialog.showSimpleAlertDialog
 import br.com.adrianorazzini.widgetchallenge.ui.home.adapter.CardListAdapter
 import br.com.adrianorazzini.widgetchallenge.ui.home.listener.CardButtonClickListener
@@ -23,6 +24,7 @@ import br.com.adrianorazzini.widgetchallenge.ui.main.MainActivity
 import br.com.adrianorazzini.widgetchallenge.ui.main.MainViewModel
 import br.com.adrianorazzini.widgetchallenge.ui.main.MainViewState
 import kotlinx.android.synthetic.main.home_fragment.*
+import java.util.concurrent.TimeUnit
 
 class HomeFragment : FragmentItem<MainViewModel, MainViewState>(), CardButtonClickListener {
 
@@ -72,6 +74,7 @@ class HomeFragment : FragmentItem<MainViewModel, MainViewState>(), CardButtonCli
         super.onStart()
 
         (activity as MainActivity).supportActionBar?.hide()
+        (activity as MainActivity).showProgressDialog()
         mViewModel.loadWidgets()
     }
 
@@ -112,10 +115,15 @@ class HomeFragment : FragmentItem<MainViewModel, MainViewState>(), CardButtonCli
         viewState.cardItems?.let {
             mRecyclerAdapter.submitList(it)
             mRecyclerAdapter.notifyDataSetChanged()
+
+            (activity as MainActivity).hideProgressDialog(TimeUnit.SECONDS.toMillis(1))
         }
     }
 
     override fun updateViewStateError(throwable: Throwable?) {
         Log.e(LOG_TAG, throwable?.message ?: "Error to update view state!")
+
+        (activity as MainActivity).hideProgressDialog(0)
+        (activity as MainActivity).showGenericErrorDialog()
     }
 }

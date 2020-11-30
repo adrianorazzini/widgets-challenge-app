@@ -3,6 +3,7 @@
 
     <string name="unavailable">Indisponível</string>
 
+    <string name="dialog_loading_label">Carregando&#8230;</string>
     <string name="generic_error_alert_title">Something Went Wrong!</string>
     <string name="generic_error_alert_message">Please, try again later</string>
 

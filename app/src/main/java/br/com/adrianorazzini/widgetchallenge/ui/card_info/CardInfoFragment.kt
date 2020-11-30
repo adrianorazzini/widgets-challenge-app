@@ -1,6 +1,7 @@
 package br.com.adrianorazzini.widgetchallenge.ui.card_info
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,10 @@ import br.com.adrianorazzini.widgetchallenge.ui.main.MainViewState
 import br.com.adrianorazzini.widgetchallenge.ui.main.StateError
 
 class CardInfoFragment : FragmentItem<MainViewModel, MainViewState>() {
+
+    companion object {
+        private const val LOG_TAG = "StatementFragment"
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,6 +46,7 @@ class CardInfoFragment : FragmentItem<MainViewModel, MainViewState>() {
         super.onStart()
 
         (activity as MainActivity).supportActionBar?.show()
+        (activity as MainActivity).showProgressDialog()
         mViewModel.loadCardInfo()
     }
 
@@ -52,12 +58,25 @@ class CardInfoFragment : FragmentItem<MainViewModel, MainViewState>() {
     }
 
     override fun updateViewStateSuccess(viewState: MainViewState) {
+        viewState.cardInfo?.let {
+            (activity as MainActivity).hideProgressDialog(0)
+        }
+
         viewState.error?.let {
+            (activity as MainActivity).hideProgressDialog(0)
+
             if (it == StateError.INVALID_CARD_ID) {
                 (activity as MainActivity).showInvalidCardIdDialog()
             } else if (it == StateError.INVALID_CARD_INFO) {
                 (activity as MainActivity).showGenericErrorDialog()
             }
         }
+    }
+
+    override fun updateViewStateError(throwable: Throwable?) {
+        Log.e(LOG_TAG, throwable?.message ?: "Error to update view state!")
+
+        (activity as MainActivity).hideProgressDialog(0)
+        (activity as MainActivity).showGenericErrorDialog()
     }
 }

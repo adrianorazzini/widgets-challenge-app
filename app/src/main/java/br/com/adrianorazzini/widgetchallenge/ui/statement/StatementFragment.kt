@@ -61,6 +61,7 @@ class StatementFragment : FragmentItem<MainViewModel, MainViewState>() {
         super.onStart()
 
         (activity as MainActivity).supportActionBar?.show()
+        (activity as MainActivity).showProgressDialog()
         mViewModel.loadStatementInfo()
     }
 
@@ -75,9 +76,13 @@ class StatementFragment : FragmentItem<MainViewModel, MainViewState>() {
         viewState.transactionItems?.let {
             mRecyclerAdapter.submitList(it)
             mRecyclerAdapter.notifyDataSetChanged()
+
+            (activity as MainActivity).hideProgressDialog(0)
         }
 
         viewState.error?.let {
+            (activity as MainActivity).hideProgressDialog(0)
+
             if (it == StateError.INVALID_ACCOUNT_ID) {
                 (activity as MainActivity).showInvalidAccountIdDialog()
             } else if (it == StateError.INVALID_STATEMENT_INFO) {
@@ -88,5 +93,8 @@ class StatementFragment : FragmentItem<MainViewModel, MainViewState>() {
 
     override fun updateViewStateError(throwable: Throwable?) {
         Log.e(LOG_TAG, throwable?.message ?: "Error to update view state!")
+
+        (activity as MainActivity).hideProgressDialog(0)
+        (activity as MainActivity).showGenericErrorDialog()
     }
 }
