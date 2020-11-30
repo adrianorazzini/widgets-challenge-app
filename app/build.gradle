@@ -16,6 +16,21 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        release {
+            keyAlias 'mpwidgets'
+            keyPassword 'mpandroid'
+            storeFile file('../Keystore.jks')
+            storePassword 'mpandroid'
+        }
+        debug {
+            keyAlias 'mpwidgets'
+            keyPassword 'mpandroid'
+            storeFile file('../Keystore.jks')
+            storePassword 'mpandroid'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
