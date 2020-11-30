@@ -16,6 +16,7 @@ import br.com.adrianorazzini.widgetchallenge.R
 import br.com.adrianorazzini.widgetchallenge.common.decoration.GridSpacingItemDecoration
 import br.com.adrianorazzini.widgetchallenge.common.fragment.FragmentItem
 import br.com.adrianorazzini.widgetchallenge.databinding.HomeFragmentBinding
+import br.com.adrianorazzini.widgetchallenge.ui.dialog.showSimpleAlertDialog
 import br.com.adrianorazzini.widgetchallenge.ui.home.adapter.CardListAdapter
 import br.com.adrianorazzini.widgetchallenge.ui.home.listener.CardButtonClickListener
 import br.com.adrianorazzini.widgetchallenge.ui.main.MainActivity
@@ -91,10 +92,16 @@ class HomeFragment : FragmentItem<MainViewModel, MainViewState>(), CardButtonCli
                             .navigate(R.id.action_homeFragment_to_cardInfoFragment)
                     }
                     Identifier.fromString(tag) == Identifier.HOME_STATEMENT_WIDGET -> {
-                        // TODO navigate to statement fragment
+                        mViewModel.setSelectedAccountId(position)
+                        findNavController()
+                            .navigate(R.id.action_homeFragment_to_statementFragment)
                     }
                     else -> {
-                        // TODO: show invalid action
+                        (activity as MainActivity).showSimpleAlertDialog(
+                            getString(R.string.home_error_no_action_associated_title),
+                            getString(R.string.home_error_no_action_associated_message),
+                            cancelable = true
+                        )
                     }
                 }
             }

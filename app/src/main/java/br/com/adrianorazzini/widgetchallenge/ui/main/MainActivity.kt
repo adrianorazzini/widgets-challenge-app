@@ -10,13 +10,14 @@ import br.com.adrianorazzini.widgetchallenge.R
 import br.com.adrianorazzini.widgetchallenge.databinding.MainActivityBinding
 import br.com.adrianorazzini.widgetchallenge.ui.dialog.DefaultAlertDialog
 import br.com.adrianorazzini.widgetchallenge.ui.dialog.GENERIC_ERROR_DIALOG_TAG
+import br.com.adrianorazzini.widgetchallenge.ui.dialog.INVALID_ACCOUNT_ID_DIALOG_TAG
 import br.com.adrianorazzini.widgetchallenge.ui.dialog.INVALID_CARD_ID_DIALOG_TAG
 
 class MainActivity : AppCompatActivity(), DefaultAlertDialog.InteractionDialogListener {
 
     override fun onPositiveClicked(dialog: DefaultAlertDialog) {
         when (dialog.tag) {
-            GENERIC_ERROR_DIALOG_TAG, INVALID_CARD_ID_DIALOG_TAG -> {
+            GENERIC_ERROR_DIALOG_TAG, INVALID_CARD_ID_DIALOG_TAG, INVALID_ACCOUNT_ID_DIALOG_TAG -> {
                 val navController = findNavController(R.id.mainNavHostFragment)
                 navController.popBackStack()
             }

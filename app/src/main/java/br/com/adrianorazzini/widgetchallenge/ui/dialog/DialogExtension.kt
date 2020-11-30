@@ -6,6 +6,7 @@ import br.com.adrianorazzini.widgetchallenge.ui.main.MainActivity
 const val SIMPLE_ALERT_DIALOG_TAG = "SIMPLE_ALERT_DIALOG"
 const val GENERIC_ERROR_DIALOG_TAG = "GENERIC_ERROR_DIALOG"
 const val INVALID_CARD_ID_DIALOG_TAG = "INVALID_CARD_ID_DIALOG"
+const val INVALID_ACCOUNT_ID_DIALOG_TAG = "INVALID_ACCOUNT_ID_DIALOG"
 
 fun showAlertDialog(
     activity: MainActivity, dialogTag: String, title: String,
@@ -32,8 +33,8 @@ fun showAlertDialog(
 }
 
 fun MainActivity.showSimpleAlertDialog(
-    title: String, message: String, positive: String?,
-    negative: String?, cancelable: Boolean,
+    title: String, message: String, positive: String? = null,
+    negative: String? = null, cancelable: Boolean,
     customTag: String = SIMPLE_ALERT_DIALOG_TAG
 ) {
     showAlertDialog(this, customTag, title, message, positive, negative, cancelable)
@@ -53,6 +54,15 @@ fun MainActivity.showInvalidCardIdDialog() {
         this, INVALID_CARD_ID_DIALOG_TAG,
         getString(R.string.card_info_invalid_id_title),
         getString(R.string.card_info_invalid_id_message),
+        null, null, false
+    )
+}
+
+fun MainActivity.showInvalidAccountIdDialog() {
+    showAlertDialog(
+        this, INVALID_ACCOUNT_ID_DIALOG_TAG,
+        getString(R.string.statement_info_invalid_account_id_title),
+        getString(R.string.statement_info_invalid_account_id_message),
         null, null, false
     )
 }

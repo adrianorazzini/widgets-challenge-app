@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.main.MainActivity">
+
+        <TextView
+            android:id="@+id/balanceLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin_intermediary"
+            android:layout_marginTop="@dimen/default_margin_huge"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:text="@{viewModel.balanceInfoField.label}"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_large"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/balanceValue"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Saldo Disponível" />
+
+        <TextView
+            android:id="@+id/balanceValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_margin"
+            android:layout_marginEnd="@dimen/default_margin_intermediary"
+            android:gravity="end"
+            android:text="@{viewModel.balanceInfoField.value}"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_large"
+            app:layout_constraintBottom_toBottomOf="@id/balanceLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/balanceLabel"
+            app:layout_constraintTop_toTopOf="@id/balanceLabel"
+            tools:text="R$ 3.000,00" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/statementRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/default_margin_huge"
+            android:clipToPadding="false"
+            android:padding="@dimen/default_margin_intermediary"
+            android:scrollbars="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/balanceLabel"
+            tools:listitem="@layout/statement_item" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="br.com.adrianorazzini.widgetchallenge.ui.main.MainViewModel" />
+    </data>
+</layout>

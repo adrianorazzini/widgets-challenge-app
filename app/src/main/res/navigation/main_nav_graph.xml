@@ -20,9 +20,16 @@
         <action
             android:id="@+id/action_homeFragment_to_cardInfoFragment"
             app:destination="@id/cardInfoFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_statementFragment"
+            app:destination="@id/statementFragment" />
     </fragment>
     <fragment
         android:id="@+id/cardInfoFragment"
         android:name="br.com.adrianorazzini.widgetchallenge.ui.card_info.CardInfoFragment"
         android:label="Detalhes" />
+    <fragment
+        android:id="@+id/statementFragment"
+        android:name="br.com.adrianorazzini.widgetchallenge.ui.statement.StatementFragment"
+        android:label="Extrato" />
 </navigation>

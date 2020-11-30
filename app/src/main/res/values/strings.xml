@@ -9,9 +9,14 @@
     <string name="home_header_invalid">Header Indisponível</string>
     <string name="home_card_button_details">Ver detalhes</string>
     <string name="home_card_button_statement">Ver extrato</string>
+    <string name="home_error_no_action_associated_title">Não disponível</string>
+    <string name="home_error_no_action_associated_message">O item selecionado não possui nenhuma ação disponível</string>
 
     <string name="card_info_available_limit">Limite Disponível:</string>
     <string name="card_info_total_limit">Limite Total:</string>
     <string name="card_info_invalid_id_title">Cartão Inválido</string>
     <string name="card_info_invalid_id_message">Não foi possível carregar as informações do cartão selecionado</string>
+
+    <string name="statement_info_invalid_account_id_title">Conta Inválida</string>
+    <string name="statement_info_invalid_account_id_message">Não foi possível carregar as informações da conta</string>
 </resources>
