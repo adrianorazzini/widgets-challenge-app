@@ -23,12 +23,12 @@ class MainViewModel : BaseViewModel<MainViewState>() {
 
     private var homeHeaderInfo: WidgetData? = null
     private var widgetsInfo: List<WidgetData>? = null
-    private var selectedCardId: String? = null
     private var cardInfo: Card? = null
-    private var selectedAccountId: String? = null
     private var statementInfo: Statement? = null
 
-    private var homeCardItems = ArrayList<CardViewItem>()
+    var selectedAccountId: String? = null
+    var selectedCardId: String? = null
+    var homeCardItems = ArrayList<CardViewItem>()
 
     val homeHeaderField: ObservableField<String> = ObservableField("")
     val cardInfoField: ObservableField<Card> = ObservableField()

@@ -46,6 +46,10 @@ android {
     dataBinding {
         enabled = true
     }
+
+    useLibrary 'android.test.runner'
+    useLibrary 'android.test.base'
+    useLibrary 'android.test.mock'
 }
 
 dependencies {
@@ -68,7 +72,14 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
     testImplementation "junit:junit:$junit_version"
+    testImplementation "androidx.test.ext:junit:$extjunit_version"
+    testImplementation "androidx.arch.core:core-testing:$coretesting_version"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
+    testImplementation "org.mockito:mockito-core:$mockito_version"
+    testImplementation "com.google.truth:truth:$googletruth_version"
 
+    androidTestImplementation "androidx.test:core:$testrunner_version"
     androidTestImplementation "androidx.test:runner:$testrunner_version"
+    androidTestImplementation "androidx.test:rules:$testrunner_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
 }
